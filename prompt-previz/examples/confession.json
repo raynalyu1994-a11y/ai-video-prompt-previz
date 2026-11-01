@@ -1,0 +1,974 @@
+{
+  "title": "告解 THE CONFESSION — Part 1 · Block 1 告解室（28s）+ Block 2B 教堂打戏（20s）",
+  "style": "jkd",
+  "axis": [
+    "SAL",
+    "MARCO"
+  ],
+  "scene_engine": {
+    "goal": "Marco: hear the full confession, then kill the man who killed his parents",
+    "obstacle": "Sal lies about where the boy hid — the one night Marco remembers",
+    "obstacle_scale": "stage",
+    "tactics": [
+      {
+        "what": "Marco plays the priest so the old man keeps talking",
+        "fails": true,
+        "returns_info": true
+      },
+      {
+        "what": "Marco throws everything in the aisle fight",
+        "fails": true,
+        "returns_info": true
+      }
+    ],
+    "reversals": [
+      {
+        "what": "The closet lie was bait — Sal unmasks the priest",
+        "form": "hidden agency",
+        "value_shift": {
+          "before": "Sal is a tired old sinner at the killer's mercy",
+          "after": "Sal is still the professional who controls the room"
+        }
+      },
+      {
+        "what": "The boy loses the fight because of the habit Sal remembers",
+        "form": "action flips",
+        "value_shift": {
+          "before": "Marco is the avenger",
+          "after": "Marco is still the kid Sal raised"
+        }
+      }
+    ]
+  },
+  "shots": [
+    {
+      "id": "A1",
+      "duration": 4,
+      "framing": "ecu",
+      "subject": "body",
+      "time_of_day": "night",
+      "film_stock": "tungsten",
+      "camera": {
+        "x": -0.2,
+        "y": -0.6,
+        "aim": "SAL",
+        "focal_mm": 85,
+        "lens": "anamorphic"
+      },
+      "lights": [
+        {
+          "name": "tungsten bulb",
+          "kelvin": 3000,
+          "in_frame": true
+        }
+      ],
+      "flare": {
+        "color": "warm-orange",
+        "source": "tungsten bulb"
+      },
+      "positions": {
+        "SAL": {
+          "x": 0,
+          "y": 0,
+          "facing": 90
+        },
+        "MARCO": {
+          "x": 1.0,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "offscreen": {
+        "MARCO": true
+      },
+      "dialogue": [
+        {
+          "speaker": "SAL",
+          "t0": 0.5,
+          "t1": 3.8,
+          "text": "Bless me, Father. It's been twenty-five years."
+        }
+      ],
+      "acting": {
+        "SAL": {
+          "scene_direction": "finish the confession",
+          "motive": "tired of carrying it",
+          "goal": "lay the weight down and learn who is listening",
+          "obstacle": "saying it aloud makes it real",
+          "tactic": "speaks to his own hands, the closet is bait",
+          "safety_line": true
+        }
+      },
+      "prompt": "ECU of Sal's scarred hands, all ten fingers interlaced and clasped tight on the ledge. As he speaks, the interlocked fingers squeeze harder until the knuckles go pale. "
+    },
+    {
+      "id": "A2",
+      "duration": 4,
+      "framing": "close",
+      "subject": "body",
+      "time_of_day": "night",
+      "film_stock": "tungsten",
+      "camera": {
+        "x": 1.1,
+        "y": -0.7,
+        "aim": "MARCO",
+        "focal_mm": 85,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": 0,
+          "y": 0,
+          "facing": 90
+        },
+        "MARCO": {
+          "x": 1.0,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "offscreen": {
+        "SAL": true
+      },
+      "beats": [
+        {
+          "t0": 2.6,
+          "t1": 3.4,
+          "actor": "MARCO",
+          "kind": "move",
+          "action": "thumb draws the hammer back"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "SAL",
+          "t0": 0.4,
+          "t1": 2.6,
+          "text": "I've come to confess a mercy."
+        }
+      ],
+      "acting": {
+        "SAL": {
+          "scene_direction": "finish the confession",
+          "motive": "tired of carrying it",
+          "goal": "lay it down",
+          "obstacle": "saying it aloud",
+          "tactic": "talks to his hands",
+          "safety_line": true
+        },
+        "MARCO": {
+          "scene_direction": "finish the confession",
+          "motive": "twenty-five years waiting for this voice",
+          "goal": "hear every word before he acts",
+          "obstacle": "the man is lying",
+          "tactic": "keeps his voice priestly, eyes on the lattice holes",
+          "safety_line": true
+        }
+      },
+      "prompt": "Marco's half, near darkness; his hand rests on a black revolver on his knee. His thumb draws the hammer back with a tiny click. His fingers tighten on the grip, then deliberately loosen, one by one."
+    },
+    {
+      "id": "A3",
+      "duration": 3,
+      "framing": "mcu",
+      "subject": "face",
+      "time_of_day": "night",
+      "camera": {
+        "x": 1.3,
+        "y": -0.9,
+        "aim": "MARCO",
+        "focal_mm": 50,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": 0,
+          "y": 0,
+          "facing": 90
+        },
+        "MARCO": {
+          "x": 1.0,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "offscreen": {
+        "SAL": true
+      },
+      "dialogue": [
+        {
+          "speaker": "MARCO",
+          "t0": 1.0,
+          "t1": 2.6,
+          "text": "Mercy isn't a sin."
+        }
+      ],
+      "acting": {
+        "MARCO": {
+          "scene_direction": "finish the confession",
+          "motive": "waiting 25 years",
+          "goal": "hear every word",
+          "obstacle": "the lie",
+          "tactic": "eyes fixed on the lattice holes",
+          "safety_line": true
+        }
+      },
+      "prompt": "MCU of Marco in profile, lattice light across his cheek. He closes his eyes for half a second to steady his breath, then fixes them on the lattice holes."
+    },
+    {
+      "id": "A4",
+      "duration": 4,
+      "framing": "mcu",
+      "subject": "face",
+      "time_of_day": "night",
+      "camera": {
+        "x": -0.4,
+        "y": -1.0,
+        "aim": "SAL",
+        "focal_mm": 50,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": 0,
+          "y": 0,
+          "facing": 90
+        },
+        "MARCO": {
+          "x": 1.0,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "dialogue": [
+        {
+          "speaker": "SAL",
+          "t0": 0.2,
+          "t1": 4.0,
+          "text": "In my line of work, it is. Mulberry Street, sixty-one. A husband and wife."
+        }
+      ],
+      "acting": {
+        "SAL": {
+          "scene_direction": "finish the confession",
+          "motive": "tired of carrying it",
+          "goal": "lay it down",
+          "obstacle": "saying it aloud makes it real",
+          "tactic": "eyes drop to his own hands and stay there",
+          "safety_line": true
+        }
+      },
+      "prompt": "MCU of Sal, three-quarter view, slow push-in. His eyes drop away from the lattice to his own clasped, scarred hands and stay there. He lets out a long breath; his jaw works twice before the words come.",
+      "offscreen": {
+        "MARCO": true
+      }
+    },
+    {
+      "id": "A5",
+      "duration": 4,
+      "framing": "wide",
+      "subject": "body",
+      "time_of_day": "night",
+      "camera": {
+        "x": 0,
+        "y": -1.5,
+        "yaw": 90,
+        "focal_mm": 40,
+        "lens": "anamorphic"
+      },
+      "beats": [
+        {
+          "t0": 0.3,
+          "t1": 1.5,
+          "actor": "SHOOTER",
+          "kind": "move",
+          "action": "wingtip shoes step into the hallway light"
+        },
+        {
+          "t0": 1.6,
+          "t1": 1.9,
+          "actor": "SHOOTER",
+          "kind": "move",
+          "action": "gunshot 1"
+        },
+        {
+          "t0": 2.4,
+          "t1": 2.7,
+          "actor": "SHOOTER",
+          "kind": "move",
+          "action": "gunshot 2"
+        },
+        {
+          "t0": 2.8,
+          "t1": 4.0,
+          "actor": "BOY",
+          "kind": "look",
+          "action": "eyes follow the shoes"
+        }
+      ],
+      "prompt": "FLASHBACK, 1961 bedroom, floor level under the bed. Polished black wingtip shoes step into the hallway light. Two gunshots — each muzzle flash floods the room white for one frame. The boy lies flat under the bed, both small hands clamped over his mouth, his wide eyes following the shoes."
+    },
+    {
+      "id": "A6",
+      "duration": 5,
+      "framing": "close",
+      "subject": "face",
+      "time_of_day": "night",
+      "camera": {
+        "x": -0.3,
+        "y": -0.8,
+        "aim": "SAL",
+        "focal_mm": 85,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": 0,
+          "y": 0,
+          "facing": 90
+        },
+        "MARCO": {
+          "x": 1.0,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "offscreen": {
+        "MARCO": true
+      },
+      "dialogue": [
+        {
+          "speaker": "SAL",
+          "t0": 0.3,
+          "t1": 2.4,
+          "text": "The boy was in the closet."
+        },
+        {
+          "speaker": "MARCO",
+          "t0": 2.5,
+          "t1": 4.3,
+          "text": "He was under the bed."
+        }
+      ],
+      "acting": {
+        "SAL": {
+          "scene_direction": "finish the confession",
+          "motive": "tired",
+          "goal": "learn who is listening",
+          "obstacle": "fear of the answer",
+          "tactic": "the closet is bait; his eyes rise and search the lattice holes",
+          "safety_line": true
+        },
+        "MARCO": {
+          "scene_direction": "finish the confession",
+          "motive": "waiting 25 years",
+          "goal": "hear it all",
+          "obstacle": "the lie",
+          "tactic": "the correction escapes before he can stop it",
+          "safety_line": true
+        }
+      },
+      "prompt": "CU of Sal, eyes still on his hands. Sal's breath stops. A beat of total stillness. Then his eyes rise slowly to the lattice and search the small holes for the eyes on the other side."
+    },
+    {
+      "id": "A7",
+      "duration": 4,
+      "framing": "close",
+      "subject": "face",
+      "time_of_day": "night",
+      "camera": {
+        "x": -0.3,
+        "y": -0.8,
+        "aim": "SAL",
+        "focal_mm": 85,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": 0,
+          "y": 0,
+          "facing": 90
+        },
+        "MARCO": {
+          "x": 1.0,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "dialogue": [
+        {
+          "speaker": "SAL",
+          "t0": 1.8,
+          "t1": 3.2,
+          "text": "...Hello, kid."
+        }
+      ],
+      "acting": {
+        "SAL": {
+          "scene_direction": "finish the confession",
+          "motive": "tired",
+          "goal": "see the boy",
+          "obstacle": "the gun behind the screen",
+          "tactic": "holds the eyes behind the lattice",
+          "safety_line": true
+        },
+        "MARCO": {
+          "scene_direction": "finish the confession",
+          "motive": "waiting 25 years",
+          "goal": "decide whether to fire",
+          "obstacle": "the old man knows him",
+          "tactic": "holds the old man's eyes through the holes",
+          "safety_line": true
+        }
+      },
+      "prompt": "CU of Sal, slow push-in, the carved lattice soft on screen-right, a faint pair of eyes behind it. He finds the eyes, leans a little closer to the lattice and stays perfectly still."
+    },
+    {
+      "id": "B1",
+      "duration": 1.3,
+      "framing": "medium",
+      "camera": {
+        "x": 0,
+        "y": -2.6,
+        "yaw": 90,
+        "focal_mm": 50,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": -0.45,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": 0.45,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 0.6,
+          "actor": "MARCO",
+          "kind": "punch",
+          "action": "right fist into Sal's face",
+          "target": "SAL",
+          "step": true
+        },
+        {
+          "t0": 0.6,
+          "t1": 1.3,
+          "actor": "SAL",
+          "kind": "react",
+          "action": "head snaps sideways, reels a step left"
+        }
+      ],
+      "prompt": "Two-shot in profile. Marco is already lunging, his right fist already flying. It smashes into Sal's face; Sal's head snaps sideways and he reels a step toward screen-left.",
+      "time_of_day": "night",
+      "style": "street"
+    },
+    {
+      "id": "B2",
+      "duration": 0.9,
+      "framing": "insert",
+      "camera": {
+        "x": -0.5,
+        "y": -0.7,
+        "yaw": 90,
+        "focal_mm": 85,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": -0.6,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": 0.45,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "offscreen": {
+        "MARCO": true
+      },
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 0.9,
+          "actor": "SAL",
+          "kind": "react",
+          "action": "lip splits, blood"
+        }
+      ],
+      "prompt": "Insert, close-up of Sal's mouth as his head swings back into frame: the corner of his lip splits.",
+      "time_of_day": "night",
+      "style": "street"
+    },
+    {
+      "id": "B3",
+      "duration": 1.8,
+      "framing": "medium",
+      "camera": {
+        "x": 0,
+        "y": -2.6,
+        "yaw": 90,
+        "focal_mm": 50,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": -0.6,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": 0.3,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "moves": [
+        {
+          "t": 1.4,
+          "id": "SAL",
+          "x": -1.1,
+          "y": 0
+        },
+        {
+          "t": 1.4,
+          "id": "MARCO",
+          "x": -0.3,
+          "y": 0
+        }
+      ],
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 0.5,
+          "actor": "MARCO",
+          "kind": "punch",
+          "action": "left hook to the ribs",
+          "target": "SAL"
+        },
+        {
+          "t0": 0.5,
+          "t1": 1.0,
+          "actor": "MARCO",
+          "kind": "punch",
+          "action": "uppercut",
+          "target": "SAL"
+        },
+        {
+          "t0": 1.0,
+          "t1": 1.8,
+          "actor": "MARCO",
+          "kind": "push",
+          "action": "two-handed shove into the pew",
+          "target": "SAL"
+        }
+      ],
+      "prompt": "Medium two-shot, three different blows in under two seconds: Marco's left hook rips into Sal's ribs; Marco's uppercut snaps him upright; Marco's two-handed shove slams Sal's back into the end of a pew.",
+      "time_of_day": "night",
+      "style": "street"
+    },
+    {
+      "id": "B4",
+      "duration": 2.0,
+      "framing": "close",
+      "subject": "face",
+      "camera": {
+        "x": -0.7,
+        "y": -1.3,
+        "yaw": 90,
+        "focal_mm": 50,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": -1.1,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": -0.4,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 0.6,
+          "actor": "MARCO",
+          "kind": "grab",
+          "action": "grabs the lapel, pins him",
+          "target": "SAL"
+        },
+        {
+          "t0": 0.6,
+          "t1": 2.0,
+          "actor": "MARCO",
+          "kind": "move",
+          "action": "right fist draws back, elbow flaring"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "SAL",
+          "t0": 0.6,
+          "t1": 1.8,
+          "text": "Still dropping that elbow, kid."
+        }
+      ],
+      "acting": {
+        "SAL": {
+          "scene_direction": "finish it",
+          "motive": "came to be judged, not to win",
+          "goal": "stop the boy without killing him",
+          "obstacle": "the boy is faster",
+          "tactic": "the line is bait to draw the big wild right; eyes on the right elbow",
+          "safety_line": true
+        },
+        "MARCO": {
+          "scene_direction": "finish it",
+          "motive": "twenty-five years of waiting",
+          "goal": "put the old man down",
+          "obstacle": "the old man knows him",
+          "tactic": "the line stings like a father's correction; he throws everything",
+          "safety_line": true
+        }
+      },
+      "prompt": "Tight two-shot. Marco grabs Sal's lapel, pins him against the pew and draws his right fist back with the elbow flaring wide. Sal spits the line fast into his face. On the last word the fist is already coming.",
+      "time_of_day": "night",
+      "style": "street"
+    },
+    {
+      "id": "B5",
+      "duration": 1.5,
+      "framing": "medium",
+      "camera": {
+        "x": -0.7,
+        "y": -2.6,
+        "yaw": 90,
+        "focal_mm": 50,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": -1.1,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": -0.4,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 0.5,
+          "actor": "MARCO",
+          "kind": "punch",
+          "action": "wide right comes around",
+          "target": "SAL"
+        },
+        {
+          "t0": 0.4,
+          "t1": 0.8,
+          "actor": "SAL",
+          "kind": "trap",
+          "action": "left palm slaps the arm down",
+          "target": "MARCO"
+        },
+        {
+          "t0": 0.8,
+          "t1": 1.5,
+          "actor": "SAL",
+          "kind": "intercept",
+          "action": "right fist through the gap to the jaw",
+          "target": "MARCO"
+        }
+      ],
+      "prompt": "Two-shot in profile. Marco's wide right comes around — Sal's left palm slaps the arm down and in, and in the same beat his right fist shoots straight through the gap into Marco's jaw.",
+      "time_of_day": "night",
+      "style": "street"
+    },
+    {
+      "id": "B6",
+      "duration": 0.8,
+      "framing": "insert",
+      "subject": "face",
+      "camera": {
+        "x": -0.2,
+        "y": -0.9,
+        "yaw": 90,
+        "focal_mm": 85,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": -1.1,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": -0.4,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "offscreen": {
+        "SAL": true
+      },
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 0.8,
+          "actor": "MARCO",
+          "kind": "react",
+          "action": "head whips sideways"
+        }
+      ],
+      "prompt": "Insert, close-up of Marco's face: his head whips sideways from the punch, eyes losing focus.",
+      "time_of_day": "night",
+      "style": "street"
+    },
+    {
+      "id": "B7",
+      "duration": 2.2,
+      "framing": "medium",
+      "camera": {
+        "x": -0.5,
+        "y": -2.6,
+        "yaw": 90,
+        "focal_mm": 50,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": -1.1,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": -0.4,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "moves": [
+        {
+          "t": 1.6,
+          "id": "MARCO",
+          "x": 0.6,
+          "y": 0
+        }
+      ],
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 0.6,
+          "actor": "SAL",
+          "kind": "punch",
+          "action": "short left hook to the ribs",
+          "target": "MARCO"
+        },
+        {
+          "t0": 0.6,
+          "t1": 1.2,
+          "actor": "SAL",
+          "kind": "grab",
+          "action": "grabs the collar, headbutt",
+          "target": "MARCO"
+        },
+        {
+          "t0": 1.2,
+          "t1": 2.2,
+          "actor": "SAL",
+          "kind": "push",
+          "action": "shoves him away to screen-right",
+          "target": "MARCO"
+        }
+      ],
+      "prompt": "Medium two-shot. A short left hook into Marco's ribs doubles him over, then Sal grabs him by the collar, drives his forehead into Marco's face and shoves him away; Marco stumbles back toward the pew end on screen-right.",
+      "time_of_day": "night",
+      "style": "street"
+    },
+    {
+      "id": "B8",
+      "duration": 3.0,
+      "framing": "wide",
+      "camera": {
+        "x": 0,
+        "y": -4.5,
+        "yaw": 90,
+        "focal_mm": 35,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": -1.1,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": 0.9,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "moves": [
+        {
+          "t": 0.9,
+          "id": "SAL",
+          "x": 0.2,
+          "y": 0
+        }
+      ],
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 0.5,
+          "actor": "MARCO",
+          "kind": "grab",
+          "action": "rips the brass candlestick from the pew end"
+        },
+        {
+          "t0": 0.5,
+          "t1": 1.0,
+          "actor": "MARCO",
+          "kind": "strike",
+          "action": "swings it like a bat",
+          "target": "SAL",
+          "step": true
+        },
+        {
+          "t0": 1.0,
+          "t1": 1.4,
+          "actor": "SAL",
+          "kind": "trap",
+          "action": "steps inside, forearm jams the bicep",
+          "target": "MARCO",
+          "step": true
+        },
+        {
+          "t0": 1.4,
+          "t1": 1.9,
+          "actor": "SAL",
+          "kind": "grab",
+          "action": "clamps the wrist, yanks it past his hip",
+          "target": "MARCO"
+        },
+        {
+          "t0": 1.9,
+          "t1": 3.0,
+          "actor": "MARCO",
+          "kind": "react",
+          "action": "thrown face-first into a pew, drops"
+        }
+      ],
+      "prompt": "Wide, full bodies. Marco rips the brass candlestick from the pew end and swings it like a bat — Sal steps inside the swing, jams the arm, clamps the wrist and yanks it past his hip; Marco is thrown face-first into the back of a pew.",
+      "time_of_day": "night",
+      "style": "street"
+    },
+    {
+      "id": "B9",
+      "duration": 3.0,
+      "framing": "wide",
+      "camera": {
+        "x": 0.1,
+        "y": -1.2,
+        "yaw": 90,
+        "focal_mm": 40,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": 0.2,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": 0.55,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 1.5,
+          "actor": "MARCO",
+          "kind": "move",
+          "action": "claws toward the revolver"
+        },
+        {
+          "t0": 1.5,
+          "t1": 2.0,
+          "actor": "SAL",
+          "kind": "move",
+          "action": "wingtip stamps onto the hand"
+        },
+        {
+          "t0": 2.0,
+          "t1": 3.0,
+          "actor": "SAL",
+          "kind": "still",
+          "action": "holds"
+        }
+      ],
+      "prompt": "Low angle at floor level, the revolver in the foreground. Marco claws toward it — Sal's black wingtip shoe stamps down flat onto the back of his hand.",
+      "time_of_day": "night",
+      "style": "street"
+    },
+    {
+      "id": "B10",
+      "duration": 3.5,
+      "framing": "wide",
+      "camera": {
+        "x": 0.1,
+        "y": -1.2,
+        "yaw": 90,
+        "focal_mm": 40,
+        "lens": "anamorphic"
+      },
+      "positions": {
+        "SAL": {
+          "x": 0.2,
+          "y": 0,
+          "facing": 0
+        },
+        "MARCO": {
+          "x": 0.55,
+          "y": 0,
+          "facing": 180
+        }
+      },
+      "beats": [
+        {
+          "t0": 0,
+          "t1": 1.8,
+          "actor": "SAL",
+          "kind": "move",
+          "action": "bends, picks up the revolver"
+        },
+        {
+          "t0": 1.8,
+          "t1": 3.5,
+          "actor": "SAL",
+          "kind": "still",
+          "action": "stands over him, gun at his side"
+        }
+      ],
+      "prompt": "Same low angle. Sal bends down with his shoe still on Marco's hand, picks up the revolver and straightens up with it hanging at his side.",
+      "time_of_day": "night",
+      "style": "street"
+    }
+  ],
+  "shared_prompt": "OPTICS: anamorphic rectilinear character, lens fixed within each shot, warm-orange horizontal streak flares off the bulb and candles, elongated vertical oval highlights in the out-of-focus areas. ACTING TASK — SAL / MARCO (see per-shot acting). FIGHT STYLE LOCK: every punch travels a short straight line launched from where the hands already rest; between exchanges both men are completely still for a full second. LOOK: shot on real 35mm film, tungsten-balanced 500-speed colour negative film grain. Aspect ratio 2.39:1."
+}

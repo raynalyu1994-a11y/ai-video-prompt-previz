@@ -189,7 +189,7 @@ def check_shot(spec, shot, idx, rep, max_len):
         if b.get("t1", 0) > dur + 1e-6:
             rep.add("error", "TIME-01", sid, f"Beat “{b.get('action','?')}” ends at {b['t1']}s > shot length {dur}s.",
                     "Cut beats or lengthen the shot.")
-    action_beats = [b for b in beats if b.get("kind") not in ("still", "look", "dialogue")]
+    action_beats = [b for b in beats if b.get("kind") not in ("still", "look", "dialogue", "react")]
     if dur and action_beats:
         density = len(action_beats) / dur
         if density > 1.25:
@@ -266,8 +266,10 @@ def check_shot(spec, shot, idx, rep, max_len):
                         f"Depth of field {near:.1f}–{'∞' if far == float('inf') else f'{far:.1f}'} m at f/{n:g}: background at {bg} m will be SHARP.",
                         "Move the camera closer to the focus object, open up, or use a longer lens.")
     text = shot.get("prompt", "")
-    if cam.get("lens") == "anamorphic" and text:
-        if not OVAL_WORDS.search(text):
+    shared = spec.get("shared_prompt", "")
+    full = (text + "\n" + shared).strip()
+    if cam.get("lens") == "anamorphic" and full:
+        if not OVAL_WORDS.search(full):
             rep.add("warn", "LENS-04", sid, "Anamorphic lens named but no oval bokeh described — model will render round bokeh.",
                     "Add “elongated vertical oval highlights on <surface>”.")
 
@@ -284,7 +286,7 @@ def check_shot(spec, shot, idx, rep, max_len):
             rep.add("warn", "LIGHT-01", sid,
                     f"Blue streak off a warm source ({named.get('name')}, {named.get('kelvin')}K) reads fake.",
                     "Make it a warm-orange streak, or add a cool source for the blue one.")
-    elif cam.get("lens") == "anamorphic" and text and not FLARE_WORDS.search(text):
+    elif cam.get("lens") == "anamorphic" and full and not FLARE_WORDS.search(full):
         rep.add("info", "LIGHT-04", sid, "Anamorphic shot with no flare described — fine if intentional.")
     stock = (shot.get("film_stock") or "").lower()
     tod = (shot.get("time_of_day") or "").lower()
@@ -306,7 +308,7 @@ def check_shot(spec, shot, idx, rep, max_len):
                     "Write scene direction / motive / goal / obstacle / tactic (acting module).")
     if dlg:
         for c in chars_in:
-            if c not in speakers and c not in acting:
+            if c not in speakers and c not in acting and not shot.get("offscreen", {}).get(c):
                 rep.add("info", "ACT-04", sid, f"{c} is in frame as a listener with no task.",
                         "A listener's task is real too (e.g. “decide if he's serious”).")
     for c, a in acting.items():
@@ -333,10 +335,10 @@ def check_shot(spec, shot, idx, rep, max_len):
             rep.add("warn", "FIGHT-03", sid, f"{len(strikes)} strike beats — economy rule says resolve in 2–4.")
         if not any(b.get("kind") == "still" for b in beats):
             rep.add("info", "FIGHT-04", sid, "No stillness beat — broken rhythm (explosion → stillness → explosion) is missing.")
-        if text and "FIGHT STYLE LOCK" not in text:
+        if full and "FIGHT STYLE LOCK" not in full:
             rep.add("info", "FIGHT-05", sid, "Prompt text has no FIGHT STYLE LOCK line at the end.")
 
-    lint_text(text, sid, rep, style=style, acting_expected=bool(dlg))
+    lint_text(text, sid, rep, style=style, acting_expected=bool(dlg) and "ACTING TASK" not in shared)
 
 
 def check_sequence(spec, rep):

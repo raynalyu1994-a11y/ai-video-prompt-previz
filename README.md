@@ -1,38 +1,78 @@
-# Prompt Previz · 用代码预演检查 AI 视频提示词
+# Prompt Previz · 先用代码把镜头「演」一遍，再去抽卡
 
-A Claude skill for AI video creators: **rehearse your prompt in code before you spend credits on a generation.**
+**一个给 AI 视频创作者的 Claude Skill：在花积分生成之前，先把提示词变成画面，看站位、看节拍、看镜头衔接。**
 
-把提示词拆成结构化的镜头规格，用脚本在"纸面上"把镜头演一遍——时长够不够、台词说不说得完、人物站在哪、拳打不打得到、镜头有没有跳轴、焦段会不会拉脸、背景到底虚不虚、光斑颜色对不对、措辞会不会反向召唤——然后给出修正后的提示词。
+<p align="center">
+  <img src="docs/demo.gif" width="480" alt="上：代码预演 / 下：实际生成">
+  <br><sub>AI 短片《告解 THE CONFESSION》Block 2B 实测｜上：代码预演（秒出、0 积分）｜下：同一段提示词的实际生成</sub>
+</p>
 
-![report](docs/report-preview.png)
+---
 
-## 能查什么
+## 你是不是也这样抽卡
 
-| 类别 | 例子 |
+- 30 秒样片抽一次 **6 块钱起**，还要排队等几分钟
+- 生成出来才发现：**人站反了**、**镜头跳轴**、**台词没说完镜头就切了**、**一拳打空气**
+- 改一句提示词 → 再抽 → 再等 → 再看……一段戏改 4、5 版是常态
+- 想用 3D 导演台先预演？建模、摆位、推理，又是一轮学习成本和积分
+
+问题的根源是：**提示词是文字，你看不见它变成画面之后长什么样。**
+
+## Prompt Previz 做的事
+
+把提示词交给 Claude，它会：
+
+1. **拆成镜头规格** —— 每个镜头几秒、谁站哪、面朝哪、机位在哪、什么焦段、哪一秒出哪一拳、哪一句台词
+2. **用代码在「纸面上」演一遍** —— 生成俯视走位图（机位视野 + 180° 轴线）、节拍/台词时间线
+3. **自动挑错** —— 把生成模型最容易翻车的地方提前标出来
+4. **直接给你改好的提示词** —— 改完再预演一次，确认没问题再去抽卡
+
+几秒钟、0 积分，改多少遍都行。
+
+<p align="center"><img src="docs/compare-confessional.jpg" width="480" alt="告解室：预演 vs 实际"></p>
+
+## 它能提前发现什么
+
+| | 会帮你抓到的问题 | 不预演的话，生成出来是…… |
+|---|---|---|
+| ⏱ **节拍** | 5 秒塞 6 个动作；1.5 秒 3 连击 | 动作被合并、跳拍、糊成一团 |
+| 🗣 **台词** | 13 个词塞进 4 秒；台词超出镜头结尾 | 吞字、口型崩、话没说完就切 |
+| 📐 **站位 / 轴线** | 机位跨过 180° 线；人物左右互换 | 剪在一起观众分不清谁在打谁 |
+| 👊 **打戏距离** | 两人隔 2.6 米直接出拳 | 一拳打空气，或者人物瞬移 |
+| 🔭 **镜头** | 24mm 拍特写；要虚化却没写对焦点；景深算下来背景其实是清楚的 | 脸被拉变形；该虚的不虚 |
+| 💡 **光** | 蓝色光斑挂在 3000K 暖灯上；画里没有光源却写了光斑 | 一眼假 |
+| ✍️ **措辞** | "no high kicks" 这种否定句；品牌名；情绪副词；武术术语 | 越不让出现越出现；冒出 logo；表演僵 |
+| 🎭 **表演** | 说话的人没有表演任务 | 眼神空洞、死鱼脸 |
+| 🎬 **剧作** | 反转没有让观众改变对角色的看法 | 情节转了，但观众无感 |
+
+## 真实案例：《告解 THE CONFESSION》
+
+80 年代复古黑帮短片，两段提示词的预演结果（完整规格见 [`examples/confession.json`](prompt-previz/examples/confession.json)）：
+
+**Block 1 · 告解室对话（28 秒 · 7 镜）**
+- ❌ A4 台词 13 个词塞进 4 秒（3.9 词/秒）→ 建议拆句或给 6 秒
+- ✅ 7 个机位都在轴线同一侧，萨尔始终画左、马可始终画右
+- ✅ 特写 85mm / 中近景 50mm，没有广角拍脸
+
+**Block 2B · 教堂打戏（20 秒 · 10 镜）**
+- ❌ "Still dropping that elbow, kid." 只给了 1.2 秒 —— 实际生成里模型自己把这个镜头拉长了，后面的镜头全部被往后挤
+- ⚠️ B3 / B5：1.5–1.8 秒塞 3 个动作 → 建议每个动作 ≥ 0.8 秒
+- ✅ 每一拳都在臂展之内，抄烛台、进身都标了垫步
+
+## 内置的专业模块
+
+预演发现问题后，Claude 会调用这些模块给出具体改法：
+
+| 模块 | 解决什么 |
 |---|---|
-| ⏱ 时间 | 5 秒塞 6 个动作；台词 7.5 词/秒；台词超出镜头结尾；超过模型单镜最大时长 |
-| 📐 空间 | 跨 180° 轴线；人物在画框外却有动作；两人相距 2.6 m 却直接出拳 |
-| 🔭 镜头 | 24 mm 拍脸；要虚化却没写对焦点；按景深公式算出背景其实是清晰的 |
-| 💡 光 | 蓝色拉丝光斑挂在 3000K 暖灯上；画内没有光源却有光斑；胶片平衡与光线不符 |
-| ✍️ 措辞 | 否定句（"no high kicks" 会召唤高踢腿）；品牌名；情绪副词；面部动作编排；武术术语 |
-| 🎭 表演 | 说话的人没有表演任务 → 眼神死；倾听者没任务 |
-| 🥋 打戏 | 高位踢；没有截击；出招过多；没有静止节拍 |
-| 🎬 结构 | 反转没有带来观众对角色的评价转变（INERT）；整段没有反转 |
-
-输出一份 HTML 预演报告：俯视走位图（机位 FOV 楔形 + 180° 轴线 + 人物朝向与移动）、节拍/台词时间线、问题清单与修法。
-
-## 内置模块
-
-| 模块 | 内容 |
-|---|---|
-| `anamorphic` | 变形宽银幕质感：焦段选择、强虚化的物理锚点、椭圆光斑与拉丝光斑、胶片描述、技术尾句 |
-| `acting` | 表演任务（ACTING TASK）写法：场景方向 → 动机 → 目标 → 障碍 → 战术，让 AI 演员的眼睛"活"起来 |
-| `fight` | 截拳道 / 咏春打戏编排：招式库（几何描述而非术语）、节拍套路、FIGHT STYLE LOCK |
-| `scene-engine` | 场景引擎：目标 / 障碍 / 战术 / 反转 / 价值转变，用于写戏和审戏 |
+| 🎞 **anamorphic** | 电影感变形宽银幕：焦段怎么选、强虚化怎么写才有效、椭圆光斑和拉丝光斑、胶片质感 |
+| 🎭 **acting** | 表演任务（ACTING TASK）：场景方向 → 动机 → 目标 → 障碍 → 战术，让 AI 演员的眼睛「活」起来 |
+| 🥋 **fight** | 截拳道 / 咏春打戏编排：用身体几何而不是术语描述招式，节拍套路，FIGHT STYLE LOCK |
+| 🎬 **scene-engine** | 场景引擎：目标 / 障碍 / 战术 / 反转 / 价值转变，用来写戏和审戏 |
 
 ## 安装
 
-**Claude（claude.ai / Claude 桌面端）**：在 [Releases](../../releases) 下载 `prompt-previz.skill`，到 Settings → Capabilities → Skills 上传。
+**Claude（claude.ai / 桌面端）**：在 [Releases](../../releases) 下载 `prompt-previz.skill`，到 **Settings → Capabilities → Skills** 上传。
 
 **Claude Code**：
 
@@ -41,20 +81,32 @@ git clone https://github.com/raynalyu1994-a11y/ai-video-prompt-previz
 cp -r ai-video-prompt-previz/prompt-previz ~/.claude/skills/
 ```
 
-然后直接对 Claude 说："帮我预演检查一下这段视频提示词" 并贴上提示词。
+## 怎么用
 
-## 单独使用脚本
+直接把提示词贴给 Claude：
 
-只需要 Python 3（无第三方依赖）：
+> 帮我预演检查一下这段视频提示词：（贴上提示词）
+
+也可以说得更具体：
+
+> 这是我第三段的 4 个镜头，帮我看看镜头之间有没有跳轴，打戏的节奏会不会太赶
+
+Claude 会输出：问题清单（每条说清楚生成时会变成什么样）+ 修改后的提示词 + 一份 HTML 预演报告（俯视走位图 + 时间线）。
+
+### 不用 Claude，单独跑脚本
+
+只需要 Python 3，无第三方依赖：
 
 ```bash
 cd prompt-previz
-python3 scripts/previz.py check examples/alley-fight.json -o out   # 完整预演 → out/report.html
+python3 scripts/previz.py check examples/confession.json -o out   # 完整预演 → out/report.html
 python3 scripts/previz.py lint my_prompt.txt --style jkd           # 只检查措辞
-python3 scripts/previz.py schema                                   # 查看规格格式
+python3 scripts/previz.py schema                                   # 查看镜头规格格式
 ```
 
-镜头规格格式见 [`prompt-previz/references/shot-spec.md`](prompt-previz/references/shot-spec.md)。
+<p align="center"><img src="docs/report-preview.png" width="640" alt="HTML 预演报告"></p>
+
+镜头规格格式见 [`references/shot-spec.md`](prompt-previz/references/shot-spec.md)。
 
 ## 结构
 
@@ -62,7 +114,7 @@ python3 scripts/previz.py schema                                   # 查看规�
 prompt-previz/
 ├── SKILL.md                     # 工作流与检查项速查
 ├── scripts/previz.py            # 预演 + 检查 + HTML 报告
-├── examples/alley-fight.json    # 示例（故意埋了一堆问题）
+├── examples/confession.json     # 《告解》两段真实提示词的镜头规格
 └── references/
     ├── shot-spec.md
     └── modules/

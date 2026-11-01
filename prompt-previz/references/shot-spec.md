@@ -41,7 +41,7 @@ Coordinates: metres on a top-down floor plan. `x` → right, `y` → forward (up
     "offscreen": {"THUG": true},     // character is intentionally out of frame
     "crosses_line_ok": false,        // this shot deliberately crosses the 180° line
     "beats": [
-      // kind: still | move | look | punch | kick | strike | elbow | knee | intercept | trap | grab | push | dialogue
+      // kind: still | move | look | react (a reaction to a hit — not counted as a new action) | punch | kick | strike | elbow | knee | intercept | trap | grab | push | dialogue
       {"t0": 0.0, "t1": 1.0, "actor": "HERO", "kind": "still", "action": "side-on stance"},
       {"t0": 1.0, "t1": 1.8, "actor": "HERO", "kind": "intercept", "action": "lead straight to chin",
        "target": "THUG", "height": "head", "step": true}
