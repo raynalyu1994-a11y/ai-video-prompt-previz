@@ -1,0 +1,51 @@
+{
+  "title": "Example — Rain alley: the interception",
+  "style": "jkd",
+  "axis": ["HERO", "THUG"],
+  "scene_engine": {
+    "goal": "Get the envelope back to his sister before midnight",
+    "obstacle": "The thug blocks the only exit of the alley",
+    "obstacle_scale": "stage",
+    "tactics": [{"what": "Talk him down, palms raised", "fails": true, "returns_info": true}],
+    "reversals": [{"what": "The thug lets him go — he was paid by the sister to test him", "form": "hidden agency",
+                   "value_shift": {"before": "", "after": ""}}]
+  },
+  "shots": [
+    {
+      "id": "S1",
+      "duration": 4,
+      "framing": "wide",
+      "time_of_day": "night",
+      "film_stock": "tungsten",
+      "camera": {"x": -1.0, "y": -3.0, "aim": [0.8, 0], "focal_mm": 35, "lens": "anamorphic", "aperture": "wide open", "height": "waist"},
+      "focus": {"target": "HERO", "distance_m": 3.2},
+      "blur_requested": true,
+      "background_m": 9,
+      "lights": [{"name": "street lamp", "kelvin": 3000, "in_frame": true}],
+      "flare": {"color": "blue", "source": "street lamp"},
+      "positions": {"HERO": {"x": 0, "y": 0, "facing": 0}, "THUG": {"x": 2.6, "y": 0, "facing": 180}},
+      "beats": [
+        {"t0": 0.0, "t1": 1.2, "actor": "HERO", "kind": "still", "action": "side-on stance, still"},
+        {"t0": 1.2, "t1": 2.0, "actor": "HERO", "kind": "intercept", "action": "lead straight to chin as thug loads swing", "target": "THUG"},
+        {"t0": 2.0, "t1": 2.6, "actor": "HERO", "kind": "kick", "action": "spinning kick", "target": "THUG", "height": "head", "step": true},
+        {"t0": 2.6, "t1": 3.4, "actor": "THUG", "kind": "move", "action": "staggers into dumpster"}
+      ],
+      "prompt": "Cinematic film still. Rain alley at night. He stands in a bai-jong stance, no windup at all. The thug's shoulder loads a wide swing — the hero's lead fist is already landing on his chin. Then a spinning kick to the head. Anamorphic 35mm lens, long horizontal blue streak flare off the street lamp. Shot on Kodak Vision3 500T."
+    },
+    {
+      "id": "S2",
+      "duration": 5,
+      "framing": "close",
+      "subject": "face",
+      "time_of_day": "night",
+      "camera": {"x": 1.5, "y": 2.0, "aim": "THUG", "focal_mm": 24, "lens": "anamorphic"},
+      "positions": {"HERO": {"x": 0, "y": 0, "facing": 0}, "THUG": {"x": 1.2, "y": 0, "facing": 180}},
+      "dialogue": [
+        {"speaker": "THUG", "t0": 0.5, "t1": 2.5, "text": "You really think you can just walk out of here with that envelope tonight, kid?"},
+        {"speaker": "HERO", "t0": 3.0, "t1": 4.5, "text": "Move."}
+      ],
+      "acting": {"HERO": {"scene_direction": "settle it without a second fight", "motive": "his sister is waiting", "goal": "make the thug step aside", "tactic": "checks both of the thug's eyes for the moment he gives up"}},
+      "prompt": "Close-up on the thug, he sadly says his line, brows lift, then the hero answers."
+    }
+  ]
+}

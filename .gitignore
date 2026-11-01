@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+previze_out/
+previze_out/
+previ*_out/
+out/
+dist/
