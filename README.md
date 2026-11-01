@@ -37,7 +37,7 @@ A Claude skill for AI video creators: **rehearse your prompt in code before you 
 **Claude Code**：
 
 ```bash
-git clone https://github.com/<you>/ai-video-prompt-previz
+git clone https://github.com/raynalyu1994-a11y/ai-video-prompt-previz
 cp -r ai-video-prompt-previz/prompt-previz ~/.claude/skills/
 ```
 
